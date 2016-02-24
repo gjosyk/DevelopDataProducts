@@ -5,6 +5,7 @@ shinyUI (
     headerPanel ("Predict Vehicle Miles Per Gallon - UCI Auto MPG Data Set "),
     
     sidebarPanel (
+      h2 ('Enter the following parameters, then press the Submit button'),
       numericInput('cyl', 'Cylinders', 6, min = 3, max= 8, step = 1),
       numericInput('disp', 'Displacement', 200, min = 70, max= 450, step = 10),
       numericInput('horse', 'Horsepower', 150, min = 50, max= 230, step = 5),
