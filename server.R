@@ -1,10 +1,10 @@
 library(shiny)
 library(RCurl)
 library(caret)
-mpg <- getURL("https://github.com/gjosyk/datasciencecoursera/blob/master/mpg.csv")
-mpg <- read.csv(text = mpg)
-mpg
-modFit <- train(mpg ~ cyl + disp + horse + weight + accel + year + origin, method="glm", data=mpg)
+mpgData <- getURL("https://github.com/gjosyk/datasciencecoursera/blob/master/mpg.csv")
+mpgData <- read.csv(text = mpg)
+mpgData
+model <- train(mpg ~ cyl + disp + horse + weight + accel + year + origin, method="glm", data=mpgData)
 shinyServer(
   function(input, output) { 
     output$prediction <- renderPrint ({
@@ -15,6 +15,6 @@ shinyServer(
       accel = input$accel
       year = input$year
       origin = input$origin
-      predict(modFit,data.frame(cyl, disp, horse, weight, accel, year, origin))})
+      predict(model,data.frame(cyl, disp, horse, weight, accel, year, origin))})
   }
 )
